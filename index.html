@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria-Teodora Popescu - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cv-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #667eea;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+
+        .name {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            background: rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .content-section {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: #667eea;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .project-card, .experience-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover, .experience-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-date {
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .card-tech {
+            color: #e74c3c;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .card-description ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .card-description li {
+            margin-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .education-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .education-details {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .coursework {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .github-link {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .extracurricular-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e74c3c;
+            transition: transform 0.3s ease;
+        }
+
+        .extracurricular-item:hover {
+            transform: translateX(5px);
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .cv-header {
+                padding: 20px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 60px; height: 60px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 40px; height: 40px; top: 20%; right: 15%; animation-delay: 2s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; bottom: 20%; left: 20%; animation-delay: 4s;"></div>
+        <div class="floating-element" style="width: 50px; height: 50px; bottom: 30%; right: 10%; animation-delay: 1s;"></div>
+    </div>
+
+    <div class="container">
+        <header class="cv-header">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNzUiIHI9Ijc1IiBmaWxsPSIjNjY3ZWVhIi8+Cjx0ZXh0IHg9Ijc1IiB5PSI4NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TVQ8L3RleHQ+Cjwvc3ZnPgo=" alt="Maria-Teodora Popescu" class="profile-img">
+            <h1 class="name">MARIA-TEODORA POPESCU</h1>
+            <p class="tagline">Computer Science Student</p>
+            <div class="contact-info">
+                <a href="tel:+40787763178" class="contact-item">
+                    📞 +40 787 763 178
+                </a>
+                <a href="mailto:popescumariateodora@yahoo.com" class="contact-item">
+                    ✉️ popescumariateodora@yahoo.com
+                </a>
+                <a href="https://www.linkedin.com/in/mariateodorapopescu/" class="contact-item" target="_blank">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/mariateodorapopescu" class="contact-item" target="_blank">
+                    🐱 GitHub
+                </a>
+            </div>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="showSection('education')">🎓 Education</button>
+            <button class="tab-btn" onclick="showSection('experience')">💼 Experience</button>
+            <button class="tab-btn" onclick="showSection('projects')">🚀 Projects</button>
+            <button class="tab-btn" onclick="showSection('skills')">⚡ Skills</button>
+            <button class="tab-btn" onclick="showSection('extracurricular')">🌟 Extracurricular</button>
+        </nav>
+
+        <main>
+            <section id="education" class="content-section active">
+                <h2 class="section-title">Education</h2>
+                <div class="education-card">
+                    <h3 class="education-title">University POLITEHNICA of Bucharest</h3>
+                    <p class="education-details">Bachelor's Degree in Computer Science and Engineering</p>
+                    <p class="education-details">2021 – 2025 (Expected)</p>
+                    <div class="coursework">
+                        <h4>Relevant Coursework:</h4>
+                        <p>Distributed Data Bases, DBA, Software Project Management, DSA, OOP, Operating System Usage, Communication Protocols, Local Networks</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="content-section">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-card">
+                    <div class="card-title">
+                        <span>Undergraduate Teaching Assistant</span>
+                        <span class="card-date">Feb. 2024 – Jun. 2024</span>
+                    </div>
+                    <div class="card-tech">Communication Protocols Course | University POLITEHNICA of Bucharest</div>
+                    <div class="card-description">
+                        <p>Collaborated with course professors to develop engaging teaching materials and provided personalized support to students, enhancing their understanding of communication protocols and networking concepts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="content-section">
+                <h2 class="section-title">Projects</h2>
+                
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Leave Management System</span>
+                        <span class="card-date">Jul. – Aug. 2024</span>
+                    </div>
+                    <div class="card-tech">Java, JSP, Servlet, HTML, CSS, JS, PL/SQL, MySQL, Eclipse</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed a fullstack web application for employee leave planning with manager/executive approval workflows</li>
+                            <li>Implemented OTP authentication via email, secure login/logout systems, and role-based dashboards</li>
+                            <li>Built PDF report generation and password encryption with BCrypt for enhanced security</li>
+                            <li>Designed intuitive user interface improving engagement and optimized workflows for efficient leave management</li>
+                            <li>Developed automated reporting tools providing valuable insights on leave usage trends</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Timetable Generator</span>
+                        <span class="card-date">Apr. 2024</span>
+                    </div>
+                    <div class="card-tech">Python, AI</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Implemented automatic timetable generation solution generating schedules in .txt format</li>
+                            <li>Used heuristic and numerical analysis algorithms: Hill Climbing and Monte Carlo Tree Search</li>
+                            <li>Optimized algorithms to satisfy both soft and hard constraints (room assignments, professors, courses)</li>
+                            <li>Analyzed performance: Hill Climbing was faster but error-prone, Monte Carlo provided stable solutions with higher computational cost</li>
+                        </ul>
+                        <a href="#" class="github-link">GitHub: Orare</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Task Scheduler</span>
+                        <span class="card-date">Dec. 2023</span>
+                    </div>
+                    <div class="card-tech">Multithreaded Java</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Deepened understanding of parallel computing: task parallelism, concurrency control, load balancing</li>
+                            <li>Implemented multiple scheduling methods: Round Robin, Shortest Queue, Size Interval Task Assignment, Least Work Left</li>
+                            <li>Integrated thread signaling for wake-up and execution management with proper synchronization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Diamonds VS Hexagones</span>
+                        <span class="card-date">Nov. 2023</span>
+                    </div>
+                    <div class="card-tech">C++ OpenGL</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed Plants vs. Zombies-inspired game using C++ with OpenGL and GLM library</li>
+                            <li>Implemented character movement, collision detection, and resource management systems</li>
+                            <li>Enhanced problem-solving skills through rendering, animation, and user interaction challenges</li>
+                            <li>Features strategic diamond placement for defense against hexagon enemies with automatic targeting</li>
+                        </ul>
+                        <a href="#" class="github-link">GitHub: Diamonds VS Hexagones</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>VanillaTODO List</span>
+                        <span class="card-date">July 2023</span>
+                    </div>
+                    <div class="card-tech">HTML5, CSS3, JavaScript</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed interactive TODO List webpage as part of Cisco WebAcademy Web101 course</li>
+                            <li>Implemented dynamic task management: adding, editing, deleting with DOM manipulation</li>
+                            <li>Added task categorization: All, Completed, Work In Progress, Deleted</li>
+                            <li>Integrated real-time weather updates and personalized greetings for enhanced UX</li>
+                            <li>Ensured responsive design across various devices with modern web technologies</li>
+                        </ul>
+                        <a href="#" class="github-link">Live Demo: VanillaTODO List</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Chess Bot</span>
+                        <span class="card-date">Apr. 2023</span>
+                    </div>
+                    <div class="card-tech">Java</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Collaborated with team of four to design and deploy Java-based chess bot on GitHub</li>
+                            <li>Implemented intelligent algorithms for move generation and decision-making (Queen, Knight, Pawn)</li>
+                            <li>Leveraged Git for version control and GitHub for collaborative development</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="content-section">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C/C++</span>
+                            <span class="skill-tag">PL/SQL</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">Rust</span>
+                            <span class="skill-tag">Assembly x86</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Technologies & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Eclipse</span>
+                            <span class="skill-tag">IntelliJ</span>
+                            <span class="skill-tag">VSCode</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">PowerBI</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Interests & Focus Areas</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Data Analytics</span>
+                            <span class="skill-tag">Full Stack Development</span>
+                            <span class="skill-tag">AI/ML</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Databases</span>
+                            <span class="skill-tag">Software Development</span>
+                            <span class="skill-tag">Education</span>
+                            <span class="skill-tag">Research</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Analytical Thinking</span>
+                            <span class="skill-tag">Adaptability</span>
+                            <span class="skill-tag">Detail-Oriented</span>
+                            <span class="skill-tag">Creative Thinking</span>
+                            <span class="skill-tag">Team Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="extracurricular" class="content-section">
+                <h2 class="section-title">Extracurricular Activities</h2>
+                
+                <div class="extracurricular-item">
+                    <h3>Code11 Event Modeling Programming & Project Thinking Workshop</h3>
+                    <p class="card-date">Apr. 2024</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Adobe DevCamp JavaScript</h3>
+                    <p class="card-date">Dec. 2023</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Student Scientific Communications Session</h3>
+                    <p class="card-date">May 2023</p>
+                    <p>Presented "From Play to Learning: Transforming Playful Activities into Educational Experiences" for Specialty Didactics</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Cisco Webacademy WEB101 Course</h3>
+                    <p class="card-date">Oct. 2022 - Jan. 2023</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Rust Workshop by IP Workshop and NXP</h3>
+                    <p class="card-date">Nov. 2022</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Volunteer in Romanian Youth Forum (FTR)</h3>
+                    <p class="card-date">Aug. 2020 – Apr. 2021</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>National Stage of Computer and Information Technology Olympiad</h3>
+                    <p class="card-date">May 2019</p>
+                    <p>Qualified at the National Stage - demonstrating exceptional programming and problem-solving abilities</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Progress bar functionality
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', updateProgressBar);
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add hover effects for project cards
+        document.querySelectorAll('.project-card, .experience-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to name
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect on page load
+        window.addEventListener('load', function() {
+            const nameElement = document.querySelector('.name');
+            const originalText = nameElement.textContent;
+            typeWriter(nameElement, originalText, 100);
+        });
+
+        // Add click effects to skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.animation = 'pulse 0.5s ease-in-out';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 500);
+            });
+        });
+
+        // Add CSS for pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.project-card, .experience-card, .skill-category, .extracurricular-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
