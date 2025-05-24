@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Maria-Teodora Popescu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .cv-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 8px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #495057;
+            margin-bottom: 25px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            filter: grayscale(20%);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            filter: grayscale(0%);
+        }
+
+        .name {
+            font-size: 2.8em;
+            color: #212529;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            color: #6c757d;
+            margin-bottom: 30px;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #495057;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            background: rgba(248, 249, 250, 0.8);
+            border: 1px solid rgba(108, 117, 125, 0.2);
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .contact-item:hover {
+            background: #495057;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 8px;
+            padding: 45px;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: #212529;
+            margin-bottom: 35px;
+            text-align: center;
+            position: relative;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, #495057, #6c757d);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
+            color: white;
+            border-radius: 6px;
+            padding: 35px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(73, 80, 87, 0.3);
+        }
+
+        .education-title {
+            font-size: 1.6em;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .education-details {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .coursework {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .experience-card, .project-card {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.8) 0%, rgba(233, 236, 239, 0.8) 100%);
+            border-radius: 6px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid #495057;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .experience-card:hover, .project-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%);
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            color: #212529;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            font-weight: 400;
+        }
+
+        .card-date {
+            font-size: 0.9em;
+            color: #6c757d;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .card-tech {
+            color: #495057;
+            font-size: 0.95em;
+            font-weight: 500;
+            margin-bottom: 18px;
+            font-family: 'Courier New', monospace;
+            background: rgba(248, 249, 250, 0.6);
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .card-description {
+            color: #495057;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        .card-description ul {
+            padding-left: 25px;
+            margin-top: 15px;
+        }
+
+        .card-description li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .card-description li::marker {
+            color: #6c757d;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.8) 0%, rgba(233, 236, 239, 0.8) 100%);
+            border-radius: 6px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(108, 117, 125, 0.1);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            color: #212529;
+            margin-bottom: 25px;
+            font-size: 1.3em;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, #212529 0%, #495057 100%);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .github-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #212529 0%, #495057 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+
+        .github-link:hover {
+            background: linear-gradient(135deg, #000000 0%, #212529 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .extracurricular-item {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.8) 0%, rgba(233, 236, 239, 0.8) 100%);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 3px solid #6c757d;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .extracurricular-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%);
+        }
+
+        .extracurricular-item h3 {
+            color: #212529;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+
+        .extracurricular-item .card-date {
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(108, 117, 125, 0.05);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.6; }
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #495057, #6c757d);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(73, 80, 87, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background: linear-gradient(135deg, #212529 0%, #495057 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Academic Typography Improvements */
+        .section p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        .card-description p {
+            text-align: justify;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        /* Enhanced Academic Spacing */
+        .section-title {
+            margin-bottom: 40px;
+        }
+
+        .project-card, .experience-card {
+            page-break-inside: avoid;
+        }
+
+        /* Print Styles for Academic Use */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .floating-elements,
+            .progress-bar,
+            .back-to-top {
+                display: none;
+            }
+            
+            .section,
+            .cv-header {
+                background: white;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .cv-header, .section {
+                padding: 25px;
+            }
+            
+            .name {
+                font-size: 2.2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+
+        /* Subtle Academic Hover Effects */
+        .section {
+            transition: all 0.4s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Enhanced Typography for Readability */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .card-tech, .skill-tag, .github-link {
+            font-family: 'Courier New', 'Monaco', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 80px; height: 80px; top: 15%; left: 8%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 60px; height: 60px; top: 25%; right: 12%; animation-delay: 3s;"></div>
+        <div class="floating-element" style="width: 100px; height: 100px; bottom: 25%; left: 15%; animation-delay: 6s;"></div>
+        <div class="floating-element" style="width: 70px; height: 70px; bottom: 35%; right: 8%; animation-delay: 2s;"></div>
+        <div class="floating-element" style="width: 40px; height: 40px; top: 60%; left: 70%; animation-delay: 4s;"></div>
+    </div>
+
+    <button class="back-to-top" onclick="scrollToTop()" id="backToTop" style="display: none;">↑</button>
+
+    <div class="container">
+        <header class="cv-header">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjYwIiBmaWxsPSIjNDk1MDU3IiBzdHJva2U9IiM2Yzc1N2QiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI2MCIgeT0iNzAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIzNiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI0MDAiPk1UPC90ZXh0Pgo8L3N2Zz4K" alt="Maria-Teodora Popescu" class="profile-img">
+            <h1 class="name">MARIA-TEODORA POPESCU</h1>
+            <p class="tagline">Computer Science Student</p>
+            <div class="contact-info">
+                <a href="tel:+40787763178" class="contact-item">
+                    📞 +40 787 763 178
+                </a>
+                <a href="mailto:popescumariateodora@yahoo.com" class="contact-item">
+                    ✉️ popescumariateodora@yahoo.com
+                </a>
+                <a href="https://www.linkedin.com/in/mariateodorapopescu/" class="contact-item" target="_blank">
+                    💼 LinkedIn Profile
+                </a>
+                <a href="https://github.com/mariateodorapopescu" class="contact-item" target="_blank">
+                    🔗 GitHub Portfolio
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Education Section -->
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-card">
+                    <h3 class="education-title">University POLITEHNICA of Bucharest</h3>
+                    <p class="education-details">Bachelor's Degree in Computer Science and Engineering</p>
+                    <p class="education-details">2021 – 2025 (Expected)</p>
+                    <div class="coursework">
+                        <h4>Relevant Coursework</h4>
+                        <p>Distributed Data Bases, Database Administration, Software Project Management, Data Structures & Algorithms, Object-Oriented Programming, Operating System Usage, Communication Protocols, Local Networks</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                <div class="experience-card">
+                    <div class="card-title">
+                        <span>Undergraduate Teaching Assistant</span>
+                        <span class="card-date">February 2024 – June 2024</span>
+                    </div>
+                    <div class="card-tech">Communication Protocols Course | University POLITEHNICA of Bucharest</div>
+                    <div class="card-description">
+                        <p>Collaborated with course professors to develop comprehensive teaching materials and provided personalized academic support to undergraduate students. Enhanced student understanding of communication protocols and networking concepts through structured tutoring sessions and practical demonstrations.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section">
+                <h2 class="section-title">Research & Development Projects</h2>
+                
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Leave Management System</span>
+                        <span class="card-date">July – August 2024</span>
+                    </div>
+                    <div class="card-tech">Java, JSP, Servlet, HTML, CSS, JavaScript, PL/SQL, MySQL, Eclipse IDE</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed a comprehensive full-stack web application for employee leave planning with hierarchical approval workflows</li>
+                            <li>Implemented secure OTP authentication via email, robust login/logout systems, and role-based dashboard interfaces</li>
+                            <li>Built automated PDF report generation capabilities and implemented password encryption using BCrypt for enhanced security</li>
+                            <li>Designed intuitive user interfaces to improve user engagement and optimized business workflows for efficient leave management</li>
+                            <li>Developed automated reporting tools providing valuable insights on leave usage trends to support management decision-making</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Intelligent Timetable Generator</span>
+                        <span class="card-date">April 2024</span>
+                    </div>
+                    <div class="card-tech">Python, Artificial Intelligence, Heuristic Algorithms</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Implemented an automatic timetable generation solution utilizing advanced AI algorithms to generate optimized schedules</li>
+                            <li>Employed heuristic and numerical analysis algorithms including Hill Climbing and Monte Carlo Tree Search methods</li>
+                            <li>Optimized algorithmic performance to satisfy both soft and hard constraints including room assignments, professor availability, and course requirements</li>
+                            <li>Conducted comprehensive performance analysis: Hill Climbing demonstrated faster execution but higher error rates, while Monte Carlo Tree Search provided more stable solutions with increased computational resource requirements</li>
+                        </ul>
+                        <a href="https://github.com/mariateodorapopescu/orareeee" class="github-link">Repository: Orare</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Multithreaded Task Scheduler</span>
+                        <span class="card-date">December 2023</span>
+                    </div>
+                    <div class="card-tech">Java, Multithreading, Concurrent Programming</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed comprehensive understanding of parallel computing concepts including task parallelism, concurrency control, and load balancing techniques</li>
+                            <li>Implemented multiple advanced scheduling algorithms: Round Robin, Shortest Queue, Size Interval Task Assignment, and Least Work Left</li>
+                            <li>Integrated sophisticated thread signaling mechanisms for wake-up and execution management with proper synchronization protocols</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Diamonds VS Hexagones Game Engine</span>
+                        <span class="card-date">November 2023</span>
+                    </div>
+                    <div class="card-tech">C++, OpenGL, GLM Library, Computer Graphics</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed a sophisticated tower defense game inspired by Plants vs. Zombies using C++ with OpenGL graphics library and GLM mathematical library</li>
+                            <li>Implemented complex game mechanics including character movement systems, collision detection algorithms, and resource management frameworks</li>
+                            <li>Enhanced problem-solving capabilities by addressing challenges in real-time rendering, smooth animation systems, and responsive user interaction</li>
+                            <li>Features strategic diamond placement mechanics for base defense against hexagon enemies with automatic targeting and projectile systems</li>
+                        </ul>
+                        <a href="https://github.com/mariateodorapopescu/rhombuses_vs_hexagoes" class="github-link">Repository: Diamonds VS Hexagones</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Parallel Marching Squares Algorithm</span>
+                        <span class="card-date">October 2023</span>
+                    </div>
+                    <div class="card-tech">C, PThreads, Parallel Computing</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed comprehensive understanding of parallel computing concepts and techniques utilizing PThreads library</li>
+                            <li>Gained practical experience in parallelizing computational algorithms for improved performance and efficiency</li>
+                            <li>Enhanced problem-solving skills in optimizing algorithms specifically for parallel execution environments</li>
+                            <li>Conducted extensive performance testing by analyzing algorithm speedup across varying thread counts to determine optimal parallelization strategies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>VanillaTODO List Web Application</span>
+                        <span class="card-date">July 2023</span>
+                    </div>
+                    <div class="card-tech">HTML5, CSS3, JavaScript, DOM Manipulation</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed a comprehensive interactive TODO List web application as part of Cisco WebAcademy Web101 certification course</li>
+                            <li>Implemented dynamic task management functionality including adding, editing, and deleting tasks with advanced DOM manipulation techniques</li>
+                            <li>Added sophisticated task categorization system with filtering options: All Tasks, Completed, Work In Progress, and Deleted</li>
+                            <li>Integrated real-time weather API updates and personalized greeting systems to enhance user experience and engagement</li>
+                            <li>Ensured responsive design compatibility across various devices utilizing modern web technologies and best practices</li>
+                        </ul>
+                        <a href="https://fabulous-travesseiro-d534ed.netlify.app/" class="github-link">Live Demo: VanillaTODO List</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>RESTful Book Server API</span>
+                        <span class="card-date">May 2023</span>
+                    </div>
+                    <div class="card-tech">C++, REST API, JSON Processing, JWT Authentication</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Implemented comprehensive client-server interactions and advanced JSON object parsing for robust web server development</li>
+                            <li>Refined HTTP request handling to seamlessly integrate JWT token authentication for enhanced security and user verification</li>
+                            <li>Contributed to the development of seamless client-server communication architecture for library management system</li>
+                            <li>Demonstrated advanced proficiency in C++ programming and modern web server development methodologies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Intelligent Chess Bot</span>
+                        <span class="card-date">April 2023</span>
+                    </div>
+                    <div class="card-tech">Java, Game AI, Algorithm Design</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Collaborated with a multidisciplinary team of four developers to design, develop, and deploy a sophisticated Java-based chess bot</li>
+                            <li>Implemented advanced algorithms for intelligent move generation and strategic decision-making capabilities for Queen, Knight, and Pawn pieces</li>
+                            <li>Leveraged Git version control system and GitHub collaborative development platform for efficient team coordination and code management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>Network Notification System</span>
+                        <span class="card-date">March 2023</span>
+                    </div>
+                    <div class="card-tech">C, Network Programming, Socket Programming</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed comprehensive understanding of communication protocols including TCP and UDP, analyzing their differences, advantages, and specific use cases</li>
+                            <li>Mastered fundamental concepts of socket programming in C including socket creation, binding, listening, and connection acceptance</li>
+                            <li>Implemented advanced message routing principles including intelligent forwarding of messages to subscribed clients based on specified topics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>University Online Catalog System</span>
+                        <span class="card-date">January 2023</span>
+                    </div>
+                    <div class="card-tech">Java, Object-Oriented Programming, Design Patterns, Swing GUI</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Developed comprehensive Java application simulating university catalog management system with both graphical user interface (Swing) and command-line interface implementations</li>
+                            <li>Implemented multiple advanced design patterns including Singleton, Factory, Visitor, Observer, and additional architectural patterns</li>
+                            <li>Created functionality for professors and teaching assistants to input student grades with integrated notification systems</li>
+                            <li>Integrated automated notification systems to inform parents about their children's academic progress and grade updates</li>
+                        </ul>
+                        <a href="https://github.com/mariateodorapopescu/Online-Catalog" class="github-link">Repository: Online Catalog</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-title">
+                        <span>ELF Dynamic Loader</span>
+                        <span class="card-date">November 2022</span>
+                    </div>
+                    <div class="card-tech">C, Linux Systems Programming, Memory Management</div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Implemented sophisticated shared/dynamic library ELF loader specifically designed for Linux operating systems</li>
+                            <li>Developed loader functionality to load executable files into memory utilizing page-by-page demand paging mechanisms</li>
+                            <li>Designed system architecture to efficiently handle and execute static executable files with optimized memory management</li>
+                        </ul>
+                        <a href="https://github.com/mariateodorapopescu/Executable_Loader" class="github-link">Repository: Executable_Loader</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section">
+                <h2 class="section-title">Technical Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages - Advanced</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PL/SQL</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Programming Languages - Intermediate</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Verilog</span>
+                            <span class="skill-tag">Assembly x86</span>
+                            <span class="skill-tag">MATLAB</span>
+                            <span class="skill-tag">Rust</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">Racket</span>
+                            <span class="skill-tag">Haskell</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Development Tools & Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Eclipse IDE</span>
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Makefile</span>
+                            <span class="skill-tag">IntelliJ IDEA</span>
+                            <span class="skill-tag">VSCode</span>
+                            <span class="skill-tag">LabVIEW</span>
+                            <span class="skill-tag">LTSpice</span>
+                            <span class="skill-tag">Xilinx</span>
+                            <span class="skill-tag">Vitis HLS</span>
+                            <span class="skill-tag">Docker</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Research Interests & Specializations</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Data Analytics</span>
+                            <span class="skill-tag">Full-Stack Development</span>
+                            <span class="skill-tag">Software Engineering</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Database Systems</span>
+                            <span class="skill-tag">AI/ML</span>
+                            <span class="skill-tag">Educational Technology</span>
+                            <span class="skill-tag">Computer Science Research</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Professional Competencies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Adaptability</span>
+                            <span class="skill-tag">Analytical Thinking</span>
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Detail-Oriented Analysis</span>
+                            <span class="skill-tag">Creative Problem-Solving</span>
+                            <span class="skill-tag">Team Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extracurricular Section -->
+            <section class="section">
+                <h2 class="section-title">Professional Development & Extracurricular Activities</h2>
+                
+                <div class="extracurricular-item">
+                    <h3>Code11 Event Modeling Programming & Project Thinking Workshop</h3>
+                    <p class="card-date">April 2024</p>
+                    <p>Advanced workshop focusing on contemporary event modeling methodologies and strategic project thinking approaches in software development.</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Adobe DevCamp JavaScript Intensive</h3>
+                    <p class="card-date">December 2023</p>
+                    <p>Comprehensive professional development program focusing on advanced JavaScript programming techniques and modern web development practices.</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Student Scientific Communications Session - Specialty Didactics</h3>
+                    <p class="card-date">May 2023</p>
+                    <p>Presented academic research paper titled "From Play to Learning: Transforming Playful Activities into Educational Experiences" at university-level scientific communications session.</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Cisco Networking Academy WEB101 Certification</h3>
+                    <p class="card-date">October 2022 - January 2023</p>
+                    <p>Completed comprehensive web development certification program covering fundamental and advanced web technologies.</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Rust Programming Language Workshop</h3>
+                    <p class="card-date">November 2022</p>
+                    <p>Professional development workshop conducted by IP Workshop and NXP focusing on systems programming with Rust language.</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>Community Service - Romanian Youth Forum (FTR)</h3>
+                    <p class="card-date">August 2020 – April 2021</p>
+                    <p>Volunteer coordinator and active participant in youth development programs and community outreach initiatives.</p>
+                </div>
+                
+                <div class="extracurricular-item">
+                    <h3>National Computer and Information Technology Olympiad</h3>
+                    <p class="card-date">May 2019</p>
+                    <p>Qualified for National Stage competition, demonstrating exceptional programming abilities and advanced problem-solving skills in competitive programming environment.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Progress bar functionality
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        }
+
+        // Back to top button functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function toggleBackToTopButton() {
+            const button = document.getElementById('backToTop');
+            if (window.pageYOffset > 400) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+
+        // Enhanced scroll event listeners
+        window.addEventListener('scroll', function() {
+            updateProgressBar();
+            toggleBackToTopButton();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced intersection observer for academic presentation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize academic-style animations
+        window.addEventListener('load', function() {
+            // Observe all academic elements
+            document.querySelectorAll('.section, .project-card, .experience-card, .skill-category, .extracurricular-item').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'all 0.8s ease-out';
+                observer.observe(element);
+            });
+
+            // Academic typing effect for name
+            const nameElement = document.querySelector('.name');
+            if (nameElement) {
+                const originalText = nameElement.textContent;
+                nameElement.textContent = '';
+                let i = 0;
+                const typeInterval = setInterval(() => {
+                    nameElement.textContent += originalText.charAt(i);
+                    i++;
+                    if (i >= originalText.length) {
+                        clearInterval(typeInterval);
+                    }
+                }, 80);
+            }
+        });
+
+        // Enhanced academic hover effects
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.animation = 'academicPulse 0.6s ease-in-out';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 600);
+            });
+        });
+
+        // Add academic pulse animation
+        const academicStyle = document.createElement('style');
+        academicStyle.textContent = `
+            @keyframes academicPulse {
+                0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(73, 80, 87, 0.4); }
+                50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(73, 80, 87, 0.1); }
+                100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(73, 80, 87, 0); }
+            }
+        `;
+        document.head.appendChild(academicStyle);
+    </script>
+</body>
+</html>
